@@ -8,22 +8,25 @@ const VENDOR_LIBS =[
     'react-redux',
     'react-router-dom',
     'redux',
-    'redux-thunk'
+    'redux-thunk',
+    'reactstrap',
+    'prop-types'
 ];
 module.exports = {
-    mode: 'production',
+    mode: 'development',
 	entry : {
 		bundle : './src/index.js',
         vendor: VENDOR_LIBS
 	},
 	output : {
-		path : path.join(__dirname, 'dist'),
-		filename: '[name].js'
+        filename: '[name].js',
+        chunkFilename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
 	},
 	module : {
 		rules :[
 			{
-				use : 'babel-loader',
+				use : ['babel-loader'],
 				test : /\.js$/,
 				exclude : /node-modules/
 			},
